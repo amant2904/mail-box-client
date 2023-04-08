@@ -1,0 +1,36 @@
+.composeBox{
+    width: 70% !important;
+}
+form label{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.toolbar{
+    width: 100%;   
+}
+.toolbar a{
+    text-decoration: none;
+    color: black;
+}
+.wrapper{
+    border: 1px solid rgb(208, 208, 208);
+    padding: 0px;
+    margin: 0px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.textEditor{
+    background-color: white;
+    padding: 0px 10px;
+    min-height: 165px;
+    line-height: 0.5;
+    cursor:text;
+}
+.sendBtn{
+    font-size: 22px !important;
+    padding: 6px 38px !important;
+    display: block !important;
+    float: right !important;
+    border: none !important;
+}

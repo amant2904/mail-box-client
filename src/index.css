@@ -21,6 +21,6 @@ code {
 .primaryBg{
   background-color: rgb(16, 16, 67) !important;
 }
-.primaryBg:hover{
+.primaryBgHover:hover{
   background-color: rgb(24, 24, 101) !important;
 }

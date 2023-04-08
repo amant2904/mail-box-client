@@ -1,0 +1,29 @@
+.sidebarBox{
+    height: 90vh;
+    position: sticky;
+    left: 0px;
+    top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.composeBtn{
+    border: none !important;
+    font-size: 26px !important;
+    padding: 10px 16px !important;
+    margin: 33px auto !important;
+    display: block !important;
+}
+.sidebarBtn{
+    display: block !important;
+    margin: 6px auto !important;
+    width: 75% !important;
+    font-size: 22px !important;
+}
+.sidebarText{
+    border-top: 1px solid grey;
+    padding: 10px;
+}
+.sidebarText p:nth-child(1){
+    font-weight: bold;
+}

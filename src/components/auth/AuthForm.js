@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from "./AuthForm.module.css"
 import { Form, Button } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux';
@@ -91,6 +91,40 @@ export default function AuthForm(props) {
 
     }
 
+    useEffect(() => {
+        const tokenId = localStorage.getItem("tokenId");
+        const check_login = async () => {
+            try {
+                const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${api_key}`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body: JSON.stringify({
+                        idToken: tokenId
+                    })
+                })
+                const data = await res.json();
+                // console.log(data);
+                if (!res.ok) {
+                    throw new Error(data.error.message);
+                }
+                if (localStorage.getItem("user_email") !== data.users[0].email) {
+                    throw new Error("unable to login");
+                }
+                dispatch(authActions.login({ tokenId: tokenId, email: data.users[0].email, fullName: data.users[0].displayName }))
+            }
+            catch (err) {
+                localStorage.removeItem("tokenId");
+                localStorage.removeItem("user_email");
+                dispatch(authActions.logout());
+            }
+        }
+        if (tokenId) {
+            check_login();
+        }
+    }, [api_key, dispatch])
+
     return (
         <Form className={`${classes.authForm} shadow-lg primaryColor`}>
             <Form.Group className="mb-3" controlId="email">
@@ -105,7 +139,7 @@ export default function AuthForm(props) {
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control type="password" placeholder="Enter Password Again" ref={confirmPassword} />
             </Form.Group>}
-            {!loading && <Button className={`d-block m-auto ${classes.loginBtn} primaryBg`} onClick={auth_handler}>{(isLogin) ? "Login" : "Sign Up"}</Button>}
+            {!loading && <Button className={`d-block m-auto ${classes.loginBtn} primaryBg primaryBgHover`} onClick={auth_handler}>{(isLogin) ? "Login" : "Sign Up"}</Button>}
             {loading && <LoadingSpinner size="50px" />}
         </Form>
     )

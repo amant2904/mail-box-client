@@ -39,7 +39,7 @@ export default function Authentication() {
                 <Row className={`${classes.formSection}`}>
                     <h2 className={`text-center primaryColor`}>{(login) ? "Login" : "Sign Up"}</h2>
                     <AuthForm overlay={overlay_handler} isLogin={login} />
-                    <button className={`${classes.switchAuth_btn} primaryBg`} onClick={authSwitch_handler}>{(login) ? "Don't Have An Account? Sign Up" : "Have An Account? Login"}</button>
+                    <button className={`${classes.switchAuth_btn} primaryBg primaryBgHover`} onClick={authSwitch_handler}>{(login) ? "Don't Have An Account? Sign Up" : "Have An Account? Login"}</button>
                 </Row>
             </Container>
         </React.Fragment>
