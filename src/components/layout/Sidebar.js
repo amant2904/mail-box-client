@@ -24,8 +24,8 @@ export default function Sidebar() {
             <div className={`${classes.sidebarBox}`}>
                 <div>
                     <Button className={`primaryBg primaryBgHover ${classes.composeBtn}`} onClick={composeMail_handler}>Compose Mail</Button>
-                    <Button className={`${classes.sidebarBtn}`} onClick={sentMail_handler}>Sent</Button>
                     <Button className={`${classes.sidebarBtn}`} onClick={recieveMail_handler}>Recieved</Button>
+                    <Button className={`${classes.sidebarBtn}`} onClick={sentMail_handler}>Sent</Button>
                     <Button className={`${classes.sidebarBtn}`} disabled>Span</Button>
                     <Button className={`${classes.sidebarBtn}`} disabled>Draft</Button>
                 </div>
