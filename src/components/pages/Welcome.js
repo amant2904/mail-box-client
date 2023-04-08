@@ -6,6 +6,7 @@ import ComposeBox from '../layout/ComposeBox';
 import { useSelector, useDispatch } from 'react-redux';
 import Inbox from '../layout/Inbox';
 import { mailActions } from '../../redux-store/mail-slice';
+import SentBox from '../layout/SentBox';
 
 export default function Welcome() {
     const content = useSelector(state => state.ui.content);
@@ -18,6 +19,7 @@ export default function Welcome() {
 
     if (content === "sent") {
         contentHeading = "Sent Mails";
+        contentLayout = <SentBox />;
     }
     else if (content === "compose") {
         contentHeading = "New Mail";
@@ -32,7 +34,7 @@ export default function Welcome() {
             try {
                 const res = await fetch(`${database_api}/${email}.json`);
                 const data = await res.json();
-                console.log(data);
+                // console.log(data);
                 if (!res.ok) {
                     throw new Error(data.error.message);
                 }

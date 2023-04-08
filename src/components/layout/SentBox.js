@@ -1,22 +1,22 @@
 import React from 'react'
-import classes from "./Inbox.module.css";
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import classes from "./SentBox.module.css"
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux'
 
-export default function Inbox() {
-    const inboxItems = useSelector(state => state.mail.recieved);
-    // console.log(inboxItems);
+export default function SentBox() {
+    const sentItems = useSelector(state => state.mail.sent);
+    // console.log(sentItems);
 
     return (
         <Container className={`${classes.inbox}`}>
             <ul>
-                {inboxItems.map((item) => {
+                {sentItems.map((item) => {
                     return <li key={item.id}>
                         <Container className={`${classes.listItem}`}>
                             <Row className={`${classes.listRow}`}>
                                 <Col className={`${classes.listItem_title}`} lg={9}>
                                     <h2>{item.title}</h2>
-                                    <p>By :- {item.by}</p>
+                                    <p>To :- {item.to}</p>
                                 </Col>
                                 <Col className={`${classes.listItem_btn} inboxBtn`} lg={3}>
                                     <Button className={`${classes.inboxOpen_btn}`}>Open</Button>

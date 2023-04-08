@@ -18,6 +18,14 @@ const mailSlice = createSlice({
                     message: action.payload.recieved[key].message
                 });
             }
+            for (let key in action.payload.sent) {
+                state.sent.push({
+                    id: key,
+                    to: action.payload.sent[key].to,
+                    title: action.payload.sent[key].title,
+                    message: action.payload.sent[key].message
+                })
+            }
         },
         clearMail(state) {
             state.recieved = [];
