@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from "./SentBox.module.css"
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux'
 import MessageListItem from '../layout/MessageListItem';
 

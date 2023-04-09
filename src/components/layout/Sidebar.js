@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from "./Sidebar.module.css";
-import { Button, Container } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from "../../redux-store/ui-slice"
 import { Link } from 'react-router-dom';
@@ -10,14 +10,6 @@ export default function Sidebar() {
 
     const composeMail_handler = () => {
         dispatch(uiActions.changeContent("compose"));
-    }
-
-    const sentMail_handler = () => {
-        dispatch(uiActions.changeContent("sent"));
-    }
-
-    const recieveMail_handler = () => {
-        dispatch(uiActions.changeContent("recieved"));
     }
 
     const unread = useSelector(state => state.mail.unread);

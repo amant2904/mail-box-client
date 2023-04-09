@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import classes from "./MailReader.module.css"
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js"
+import { EditorState, convertFromRaw } from "draft-js"
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
 import { useSelector, useDispatch } from 'react-redux';
 import { mailActions } from '../../redux-store/mail-slice';
@@ -12,13 +12,10 @@ export default function MailReader() {
     const params = useParams();
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location)
+    // console.log(location)
 
     const message = location.state.message;
-
-    const [editorState, setEditorState] = useState(() =>
-        EditorState.createWithContent(convertFromRaw(JSON.parse(message)))
-    );
+    const editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(message)));
 
     const goBack_handler = () => {
         if (params.mode === "recieved") {
@@ -64,7 +61,7 @@ export default function MailReader() {
         if (location.state.unread) {
             unread_false()
         }
-    }, [])
+    }, [database_api, dispatch, location.state.by, location.state.id, location.state.message, location.state.title, location.state.unread, user_email])
 
     return (
         <React.Fragment>

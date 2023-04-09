@@ -11,6 +11,8 @@ const mailSlice = createSlice({
     initialState,
     reducers: {
         firstFetch(state, action) {
+            state.recieved = [];
+            state.sent = [];
             for (let key in action.payload.recieved) {
                 state.recieved.unshift({
                     id: key,
@@ -55,6 +57,9 @@ const mailSlice = createSlice({
                 return item.id === action.payload
             })
             state.sent.splice(findIndex, 1);
+        },
+        sentMail_handler(state, action) {
+            state.sent.unshift(action.payload);
         }
     }
 })

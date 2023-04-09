@@ -1,16 +1,33 @@
 import React, { useState } from 'react'
 import classes from "./ComposeBox.module.css";
 import { Container, Row, Form, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { mailActions } from '../../redux-store/mail-slice';
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js"
+import { EditorState, convertToRaw } from "draft-js"
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
+import LoadingSpinner from '../UI/LoadingSpinner';
+import Overlay from '../layout/Overlay';
 
 export default function ComposeBox() {
+    const dispatch = useDispatch();
     const userEmail = useSelector(state => state.auth.user_email);
     const database_api = useSelector(state => state.ui.database_api);
     const [email, setEmail] = useState("");
     const [title, setTitle] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [overlay, setOverlay] = useState({
+        isTrue: false,
+        message: ""
+    })
+
+    const overlayClose_handler = () => {
+        setOverlay({
+            isTrue: false,
+            message: ""
+        })
+    }
+
     const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
     );
@@ -39,8 +56,7 @@ export default function ComposeBox() {
         }).join("")
 
         let message = convertToRaw(editorState.getCurrentContent());
-        localStorage.setItem("data", JSON.stringify(message));
-        console.log(message);
+        setLoading(true);
         try {
             const sender_res = await fetch(`${database_api}/${sender}/sent.json`, {
                 method: 'POST',
@@ -54,7 +70,7 @@ export default function ComposeBox() {
                 })
             })
             const sender_data = await sender_res.json();
-            console.log(sender_data);
+            // console.log(sender_data);
             if (!sender_res.ok) {
                 throw new Error(sender_data.error.message);
             }
@@ -72,18 +88,34 @@ export default function ComposeBox() {
                 })
             })
             const reciever_data = await reciever_res.json();
-            console.log(reciever_data);
+            // console.log(reciever_data);
             if (!reciever_res.ok) {
-                throw new Error("not recieved");
+                throw new Error(reciever_data.error.message);
             }
+            dispatch(mailActions.sentMail_handler({
+                to: email,
+                title: title,
+                message: JSON.stringify(message),
+                id: sender_data.name
+            }))
+            setOverlay({
+                isTrue: true,
+                message: "Mail Sent Successfully"
+            })
+            setLoading(false);
         }
         catch (err) {
-            console.log(err);
+            setOverlay({
+                isTrue: true,
+                message: err.message
+            })
+            setLoading(false);
         }
     }
 
     return (
         <React.Fragment>
+            {overlay.isTrue && <Overlay onClick={overlayClose_handler} message={overlay.message} />}
             <h1 className={`text-center primaryColor ${classes.contentHeading}`}>New Mail</h1>
             <Container className={`${classes.composeBox}`}>
                 <Row className={`${classes.editor} flex-column align-items-center justify-content-center`}>
@@ -104,7 +136,8 @@ export default function ComposeBox() {
                             editorClassName={classes.textEditor}
                             onEditorStateChange={updateTextDescription}
                         />
-                        <Button onClick={submit_handler} className={`primaryBg primaryBgHover my-3 ${classes.sendBtn}`}>Send</Button>
+                        {!loading && <Button onClick={submit_handler} className={`primaryBg primaryBgHover my-3 mx-auto ${classes.sendBtn}`}>Send</Button>}
+                        {loading && <LoadingSpinner size="60px" className={classes.loader} />}
                     </Form>
                 </Row>
             </Container>

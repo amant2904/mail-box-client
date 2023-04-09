@@ -36,6 +36,8 @@ form label{
     font-size: 22px !important;
     padding: 6px 38px !important;
     display: block !important;
-    float: right !important;
     border: none !important;
+}
+.loader{
+    margin: 10px 0px;
 }

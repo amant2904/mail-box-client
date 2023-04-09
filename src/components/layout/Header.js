@@ -4,15 +4,18 @@ import { Row, Button, Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../redux-store/auth-slice';
 import { mailActions } from '../../redux-store/mail-slice';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const logoutHandler = () => {
         dispatch(authActions.logout());
         localStorage.removeItem("tokenId");
         localStorage.removeItem("user_email");
         dispatch(mailActions.clearMail())
+        navigate("/");
     }
 
     return (

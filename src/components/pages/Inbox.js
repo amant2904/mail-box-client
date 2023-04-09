@@ -1,12 +1,12 @@
 import React from 'react'
 import classes from "./Inbox.module.css";
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
 import MessageListItem from '../layout/MessageListItem';
 
 export default function Inbox() {
     const inboxItems = useSelector(state => state.mail.recieved);
+    // console.log(inboxItems);
 
     return (
         <React.Fragment>

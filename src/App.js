@@ -12,7 +12,6 @@ import SentBox from "./components/pages/SentBox"
 import ComposeBox from "./components/pages/ComposeBox"
 import MailReader from './components/layout/MailReader';
 
-
 function App() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const database_api = useSelector(state => state.ui.database_api);
@@ -37,7 +36,7 @@ function App() {
         console.log(err.message);
       }
     }
-    firstFetch();
+    firstFetch()
   }, [database_api, userEmail, dispatch])
 
   return (
