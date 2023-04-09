@@ -1,0 +1,58 @@
+.inbox{
+    margin: 30px auto !important;
+    width: 70% !important;
+}
+.inbox ul{
+    margin: 0;
+    padding: 0;
+}
+.inbox ul li{
+    list-style: none;
+    margin: 10px 0px;
+    border: 1px solid black;
+    border-radius: 22px;
+    overflow: hidden;
+}
+.listItem{
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    padding: 5px 20px !important;
+}
+.listItem_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+}
+.listItem_title h2{
+    font-size: 30px;
+    margin: 0px 0px 5px 0px;
+}
+.listItem_title p{
+    margin: 5px;
+}
+.listRow div:nth-child(2){
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.listRow div:nth-child(2) button{
+    margin: 0px 8px !important;
+}
+.inboxOpen_btn{
+    background-color: #FF9800 !important;
+    font-size: 20px !important;
+    padding: 5px 15px !important;
+    border: none !important;
+}
+.inboxOpen_btn:hover{
+    background-color: #cb800f !important;
+}
+.inboxDelete_btn{
+    background-color: red !important;
+    font-size: 20px !important;
+    padding: 5px 15px !important;
+}
+.inboxDelete_btn:hover{
+    background-color: rgb(212, 15, 15) !important;
+}

@@ -11,7 +11,7 @@ const mailSlice = createSlice({
     reducers: {
         firstFetch(state, action) {
             for (let key in action.payload.recieved) {
-                state.recieved.push({
+                state.recieved.unshift({
                     id: key,
                     by: action.payload.recieved[key].by,
                     title: action.payload.recieved[key].title,
@@ -19,7 +19,7 @@ const mailSlice = createSlice({
                 });
             }
             for (let key in action.payload.sent) {
-                state.sent.push({
+                state.sent.unshift({
                     id: key,
                     to: action.payload.sent[key].to,
                     title: action.payload.sent[key].title,

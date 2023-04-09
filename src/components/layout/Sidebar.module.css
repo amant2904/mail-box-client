@@ -1,8 +1,9 @@
 .sidebarBox{
-    height: 90vh;
-    position: sticky;
+    height: 89vh;
+    position: fixed;
     left: 0px;
     top: 10vh;
+    width: 16.666666%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,7 +26,7 @@
     text-decoration: none !important;
     color: white !important;
     text-align: center !important;
-    padding: 8px 20px !important;
+    padding: 7px 20px !important;
     display: block !important;
     margin: 6px auto !important;
     width: 75% !important;
@@ -34,6 +35,7 @@
 }
 .sidebarBtn:hover{
     color: white;
+    background-color: rgb(12, 98, 227) !important;
 }
 .sidebarText{
     border-top: 1px solid grey;

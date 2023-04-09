@@ -7,9 +7,9 @@ import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
 import { Container, Row, Col } from 'react-bootstrap';
 import classes from "./App.module.css"
-import Inbox from "./components/layout/Inbox"
-import SentBox from "./components/layout/SentBox"
-import ComposeBox from "./components/layout/ComposeBox"
+import Inbox from "./components/pages/Inbox"
+import SentBox from "./components/pages/SentBox"
+import ComposeBox from "./components/pages/ComposeBox"
 
 
 function App() {
@@ -53,6 +53,7 @@ function App() {
               {isLoggedIn && <Route path="/" element={<Inbox />} />}
               {isLoggedIn && <Route path="/sent" element={<SentBox />} />}
               {isLoggedIn && <Route path="/new-mail" element={<ComposeBox />} />}
+              {/* {!isLoggedIn && <Route path="*" element={<Authentication />} />} */}
             </Routes>
           </Col>
         </Row>
