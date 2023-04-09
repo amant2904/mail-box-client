@@ -43,6 +43,18 @@ const mailSlice = createSlice({
             })
             item.unread = false;
             state.unread--;
+        },
+        deleteRecieved(state, action) {
+            const findIndex = state.recieved.findIndex((item) => {
+                return item.id === action.payload
+            })
+            state.recieved.splice(findIndex, 1);
+        },
+        deleteSent(state, action) {
+            const findIndex = state.sent.findIndex((item) => {
+                return item.id === action.payload
+            })
+            state.sent.splice(findIndex, 1);
         }
     }
 })
