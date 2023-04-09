@@ -3,6 +3,7 @@ import classes from "./Sidebar.module.css";
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { uiActions } from "../../redux-store/ui-slice"
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
     const dispatch = useDispatch();
@@ -23,11 +24,11 @@ export default function Sidebar() {
         <React.Fragment>
             <div className={`${classes.sidebarBox}`}>
                 <div>
-                    <Button className={`primaryBg primaryBgHover ${classes.composeBtn}`} onClick={composeMail_handler}>Compose Mail</Button>
-                    <Button className={`${classes.sidebarBtn}`} onClick={recieveMail_handler}>Recieved</Button>
-                    <Button className={`${classes.sidebarBtn}`} onClick={sentMail_handler}>Sent</Button>
-                    <Button className={`${classes.sidebarBtn}`} disabled>Span</Button>
-                    <Button className={`${classes.sidebarBtn}`} disabled>Draft</Button>
+                    <Link to="/new-mail" className={`primaryBg primaryBgHover ${classes.composeBtn}`} onClick={composeMail_handler}>Compose Mail</Link>
+                    <Link to="/" className={`${classes.sidebarBtn} bg-primary`} >Recieved</Link>
+                    <Link to="/sent" className={`${classes.sidebarBtn} bg-primary`} >Sent</Link>
+                    <Link className={`${classes.sidebarBtn} bg-primary`} disabled>Span</Link>
+                    <Link className={`${classes.sidebarBtn} bg-primary`} disabled>Draft</Link>
                 </div>
                 <div className={`${classes.sidebarText}`}>
                     <p className={`text-center`}>Service Provided By XYZ Technologies</p>

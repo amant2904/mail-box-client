@@ -81,28 +81,31 @@ export default function ComposeBox() {
     }
 
     return (
-        <Container className={`${classes.composeBox}`}>
-            <Row className={`${classes.editor} flex-column align-items-center justify-content-center`}>
-                <Form className='p-0'>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>To</Form.Label>
-                        <Form.Control type="email" placeholder="name@example.com" value={email} onChange={email_handler} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control as="textarea" rows={1} value={title} onChange={title_handler} />
-                    </Form.Group>
-                    <Form.Label>Message</Form.Label>
-                    <Editor
-                        editorState={editorState}
-                        toolbarClassName={classes.toolbar}
-                        wrapperClassName={classes.wrapper}
-                        editorClassName={classes.textEditor}
-                        onEditorStateChange={updateTextDescription}
-                    />
-                    <Button onClick={submit_handler} className={`primaryBg primaryBgHover my-3 ${classes.sendBtn}`}>Send</Button>
-                </Form>
-            </Row>
-        </Container>
+        <React.Fragment>
+            <h1 className={`text-center primaryColor ${classes.contentHeading}`}>New Mail</h1>
+            <Container className={`${classes.composeBox}`}>
+                <Row className={`${classes.editor} flex-column align-items-center justify-content-center`}>
+                    <Form className='p-0'>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>To</Form.Label>
+                            <Form.Control type="email" placeholder="name@example.com" value={email} onChange={email_handler} />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control as="textarea" rows={1} value={title} onChange={title_handler} />
+                        </Form.Group>
+                        <Form.Label>Message</Form.Label>
+                        <Editor
+                            editorState={editorState}
+                            toolbarClassName={classes.toolbar}
+                            wrapperClassName={classes.wrapper}
+                            editorClassName={classes.textEditor}
+                            onEditorStateChange={updateTextDescription}
+                        />
+                        <Button onClick={submit_handler} className={`primaryBg primaryBgHover my-3 ${classes.sendBtn}`}>Send</Button>
+                    </Form>
+                </Row>
+            </Container>
+        </React.Fragment>
     )
 }

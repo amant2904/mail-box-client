@@ -93,6 +93,7 @@ export default function AuthForm(props) {
 
     useEffect(() => {
         const tokenId = localStorage.getItem("tokenId");
+        console.log(1);
         const check_login = async () => {
             try {
                 const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${api_key}`, {

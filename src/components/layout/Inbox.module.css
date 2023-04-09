@@ -1,3 +1,8 @@
+.contentHeading{
+    font-size: 52px;
+    font-weight: bold;
+    margin-top: 14px;
+}
 .inbox{
     margin: 30px auto !important;
     width: 70% !important;
@@ -36,6 +41,9 @@
     align-items: center;
     justify-content: center;
 }
+.listRow div:nth-child(2) a{
+    margin: 0px 8px !important;
+}
 .listRow div:nth-child(2) button{
     margin: 0px 8px !important;
 }
@@ -44,6 +52,8 @@
     font-size: 20px !important;
     padding: 5px 15px !important;
     border: none !important;
+    text-decoration: none !important;
+    color: white !important;
 }
 .inboxOpen_btn:hover{
     background-color: #cb800f !important;

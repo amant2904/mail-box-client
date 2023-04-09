@@ -8,26 +8,29 @@ export default function SentBox() {
     // console.log(sentItems);
 
     return (
-        <Container className={`${classes.inbox}`}>
-            <ul>
-                {sentItems.map((item) => {
-                    return <li key={item.id}>
-                        <Container className={`${classes.listItem}`}>
-                            <Row className={`${classes.listRow}`}>
-                                <Col className={`${classes.listItem_title}`} lg={9}>
-                                    <h2>{item.title}</h2>
-                                    <p>To :- {item.to}</p>
-                                </Col>
-                                <Col className={`${classes.listItem_btn} inboxBtn`} lg={3}>
-                                    <Button className={`${classes.inboxOpen_btn}`}>Open</Button>
-                                    <Button className={`${classes.inboxDelete_btn}`}>Delete</Button>
-                                    <p hidden>{item.id}</p>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </li>
-                })}
-            </ul>
-        </Container>
+        <React.Fragment>
+            <h1 className={`text-center primaryColor ${classes.contentHeading}`}>Sent Mails</h1>
+            <Container className={`${classes.inbox}`}>
+                <ul>
+                    {sentItems.map((item) => {
+                        return <li key={item.id}>
+                            <Container className={`${classes.listItem}`}>
+                                <Row className={`${classes.listRow}`}>
+                                    <Col className={`${classes.listItem_title}`} lg={9}>
+                                        <h2>{item.title}</h2>
+                                        <p>To :- {item.to}</p>
+                                    </Col>
+                                    <Col className={`${classes.listItem_btn} inboxBtn`} lg={3}>
+                                        <Button className={`${classes.inboxOpen_btn}`}>Open</Button>
+                                        <Button className={`${classes.inboxDelete_btn}`}>Delete</Button>
+                                        <p hidden>{item.id}</p>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </li>
+                    })}
+                </ul>
+            </Container>
+        </React.Fragment>
     )
 }

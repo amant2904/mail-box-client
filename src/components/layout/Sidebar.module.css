@@ -13,12 +13,27 @@
     padding: 10px 16px !important;
     margin: 33px auto !important;
     display: block !important;
+    text-decoration: none !important;
+    color: white !important;
+    width: fit-content !important;
+    border-radius: 12px !important;
+}
+.composeBtn:hover{
+    color: white !important;
 }
 .sidebarBtn{
+    text-decoration: none !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 8px 20px !important;
     display: block !important;
     margin: 6px auto !important;
     width: 75% !important;
     font-size: 22px !important;
+    border-radius: 7px !important;
+}
+.sidebarBtn:hover{
+    color: white;
 }
 .sidebarText{
     border-top: 1px solid grey;

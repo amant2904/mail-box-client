@@ -1,5 +1,6 @@
-.welcome{
+.ui{
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    overflow: hidden;
 }
 .sidebar{
     border-right: 1px solid grey;
@@ -10,4 +11,3 @@
     font-weight: bold;
     margin-top: 14px;
 }
-

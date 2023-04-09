@@ -1,3 +1,8 @@
+.contentHeading{
+    font-size: 52px;
+    font-weight: bold;
+    margin-top: 14px;
+}
 .composeBox{
     width: 70% !important;
 }
