@@ -1,4 +1,4 @@
-.inbox{
+/* .inbox{
     margin: 30px auto !important;
     width: 70% !important;
 }
@@ -12,7 +12,7 @@
     border: 1px solid black;
     border-radius: 22px;
     overflow: hidden;
-}
+} */
 .listItem{
     background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
     padding: 5px 20px !important;
@@ -27,6 +27,13 @@
     font-size: 30px;
     margin: 0px 0px 5px 0px;
 }
+.listItem_title h2 span{
+    background-color: white;
+    color: #25258b;
+    padding: 1px 5px;
+    font-size: 15px;
+    border-radius: 8px;
+}
 .listItem_title p{
     margin: 5px;
 }
@@ -40,10 +47,13 @@
     margin: 0px 8px !important;
 }
 .inboxOpen_btn{
+    text-decoration: none !important;
+    color: white !important;
     background-color: #FF9800 !important;
     font-size: 20px !important;
     padding: 5px 15px !important;
     border: none !important;
+    border-radius: 5px;
 }
 .inboxOpen_btn:hover{
     background-color: #cb800f !important;

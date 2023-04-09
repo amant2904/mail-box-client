@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     recieved: [],
-    sent: []
+    sent: [],
+    unread: 0
 }
 
 const mailSlice = createSlice({
@@ -15,8 +16,12 @@ const mailSlice = createSlice({
                     id: key,
                     by: action.payload.recieved[key].by,
                     title: action.payload.recieved[key].title,
-                    message: action.payload.recieved[key].message
+                    message: action.payload.recieved[key].message,
+                    unread: action.payload.recieved[key].unread
                 });
+                if (action.payload.recieved[key].unread) {
+                    state.unread += 1;
+                }
             }
             for (let key in action.payload.sent) {
                 state.sent.unshift({
@@ -30,6 +35,14 @@ const mailSlice = createSlice({
         clearMail(state) {
             state.recieved = [];
             state.sent = [];
+            state.unread = 0;
+        },
+        unreadfalse(state, action) {
+            const item = state.recieved.find((item) => {
+                return item.id === action.payload;
+            })
+            item.unread = false;
+            state.unread--;
         }
     }
 })

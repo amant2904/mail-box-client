@@ -10,6 +10,7 @@ import classes from "./App.module.css"
 import Inbox from "./components/pages/Inbox"
 import SentBox from "./components/pages/SentBox"
 import ComposeBox from "./components/pages/ComposeBox"
+import MailReader from './components/layout/MailReader';
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
               {isLoggedIn && <Route path="/" element={<Inbox />} />}
               {isLoggedIn && <Route path="/sent" element={<SentBox />} />}
               {isLoggedIn && <Route path="/new-mail" element={<ComposeBox />} />}
-              {/* {!isLoggedIn && <Route path="*" element={<Authentication />} />} */}
+              {isLoggedIn && <Route path='/:mode/:id' element={<MailReader />} />}
             </Routes>
           </Col>
         </Row>

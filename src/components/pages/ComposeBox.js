@@ -39,7 +39,8 @@ export default function ComposeBox() {
         }).join("")
 
         let message = convertToRaw(editorState.getCurrentContent());
-
+        localStorage.setItem("data", JSON.stringify(message));
+        console.log(message);
         try {
             const sender_res = await fetch(`${database_api}/${sender}/sent.json`, {
                 method: 'POST',
@@ -49,7 +50,7 @@ export default function ComposeBox() {
                 body: JSON.stringify({
                     to: email,
                     title: title,
-                    message: message
+                    message: JSON.stringify(message)
                 })
             })
             const sender_data = await sender_res.json();
@@ -66,7 +67,8 @@ export default function ComposeBox() {
                 body: JSON.stringify({
                     by: userEmail,
                     title: title,
-                    message: message
+                    message: JSON.stringify(message),
+                    unread: true
                 })
             })
             const reciever_data = await reciever_res.json();

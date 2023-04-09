@@ -37,6 +37,14 @@
     color: white;
     background-color: rgb(12, 98, 227) !important;
 }
+.sidebarBtn span{
+    padding: 0px 5px;
+    border-radius: 7px;
+    background-color: white;
+    color: #181b63;
+    font-weight: bolder;
+    margin-left: 5px;
+}
 .sidebarText{
     border-top: 1px solid grey;
     padding: 10px;
